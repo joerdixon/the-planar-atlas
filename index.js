@@ -1,7 +1,10 @@
 // The Planar Atlas Course Charting Machine
 
 // TODO: Add a nope button to reroll planes.
-// TODO: Add an exception for the astral plane
+// TODO: Add an exception for the astral plane.
+// TODO: Prevent duplicate planes on route.
+// TODO: Add selector for destination plane.
+// TODO: Add hours for times less than a day.
 
 // DOM Selectors
 const arcanaCheck = document.getElementById("arcana-check");
@@ -122,7 +125,6 @@ const planarAtlas = [
 // Array of all possible gate statuses.
 const gateStatus = [
     "Opening",
-    "Open",
     "Closing"
 ]
 
@@ -148,6 +150,7 @@ function determineTiming() {
         return timing;
     }
 }
+
 // Creates an HTML element to be added to the itinerary.
 function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     // Main Container
@@ -156,7 +159,7 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     // Title
     const planeTitle = document.createElement("h1")
     planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = `The ${name}`
+    planeTitle.innerText = name
     planeCard.appendChild(planeTitle)
     // Travel Info Container
     const planeInfo = document.createElement("ul");
@@ -226,7 +229,7 @@ function Chart() {
             // The name of the plane.
             name: planarAtlas[Dice(100) - 1],
             // Is the gate opening, open, or closing.
-            status: gateStatus[Dice(3) - 1],
+            status: gateStatus[Dice(2) - 1],
             // Where the gate will open in that plane
             location: gateLocation[Dice(3) - 1],
             // How long it will take to get to that gate.
