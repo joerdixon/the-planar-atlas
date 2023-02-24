@@ -12,10 +12,20 @@ body {
     border: white 2px solid;
 }
 
+#hero {
+    text-align: center;
+}
+
 #user-input {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+#start-chart {
+    width: 60px;
+    margin: 20px;
 }
 
 .input-box {

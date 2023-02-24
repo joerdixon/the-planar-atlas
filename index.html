@@ -11,7 +11,7 @@
 
 <body>
     <div id="root">
-        <h1>Chart a Course!</h1>
+        <h1 id="hero">Chart a Course!</h1>
         <form id='user-input'>
             <label for="arcana-check">Arcana Check:</label>
             <input type="number" id="arcana-check" class="input-box">
@@ -71,7 +71,7 @@
                 <!-- Figure out what to do about undisclosed planes. -->
                 <option value="???">???</option>
             </select>
-            <button id='start-chart' type="button" onclick="Chart()">Start</button>
+            <button id='start-chart' type="button"  onclick="Chart()">Start</button>
         </form>
         <div id="chart-container">
             <!-- The chart will contain the course -->
