@@ -1,11 +1,15 @@
 // The Planar Atlas Course Charting Machine
 
-// TODO: Add a nope button to reroll planes.
+// TODO: Add a button to reroll planes.
 // TODO: Add an exception for the astral plane.
 // TODO: Prevent duplicate planes on route.
 // TODO: Add input for destination plane.
 // TODO: Add input for origin plane.
 // TODO: Add hours for times less than a day.
+
+// Questions:
+// Are these all the avaliable planes to start from/go to 
+
 
 // DOM Selectors
 const arcanaCheck = document.getElementById("arcana-check");

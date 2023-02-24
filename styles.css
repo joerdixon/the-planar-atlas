@@ -12,6 +12,18 @@ body {
     border: white 2px solid;
 }
 
+#user-input {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input-box {
+    width: 30%;
+    padding: 10px;
+    margin: 15px;
+}
+
 .planeTitle {
     font-family: sans-serif;
 }
