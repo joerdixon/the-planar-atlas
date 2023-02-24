@@ -196,12 +196,16 @@ function Chart() {
     // Check that they entered something.
     if (arcanaCheck.value === "") {
         alert("Please enter your roll")
+        return;
     } else {
         // Store the input as their roll.
         roll = Number(arcanaCheck.value);
         // Reset the input
         arcanaCheck.value = "";
     }
+
+    // Reset the chart
+    chart.innerHTML = "";
 
     // The players roll determines the amount of planes that must be rolled.
     switch (true) {
@@ -218,8 +222,6 @@ function Chart() {
             planes = Dice(8);
             break;
     }
-
-    // Create the course itinerary element
 
     // Roll the number of planes specified.
     for (let i = 0; i < planes; i++) {
@@ -241,8 +243,6 @@ function Chart() {
         // Create and append a plane card to the chart.
         chart.appendChild(createPlaneCard(nextPlane))
     }
-
-    userConsole.appendChild(course);
 
     alert(`You rolled ${planes} planes!`)
 
