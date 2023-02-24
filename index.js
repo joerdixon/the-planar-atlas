@@ -3,7 +3,8 @@
 // TODO: Add a nope button to reroll planes.
 // TODO: Add an exception for the astral plane.
 // TODO: Prevent duplicate planes on route.
-// TODO: Add selector for destination plane.
+// TODO: Add input for destination plane.
+// TODO: Add input for origin plane.
 // TODO: Add hours for times less than a day.
 
 // DOM Selectors
@@ -156,29 +157,24 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     // Main Container
     const planeCard = document.createElement("div");
     planeCard.classList.add("planeCard");
-    // Title
+    // Name and Location
     const planeTitle = document.createElement("h1")
     planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = name
+    planeTitle.innerText = `${name} - ${location}`
     planeCard.appendChild(planeTitle)
     // Travel Info Container
     const planeInfo = document.createElement("ul");
     planeInfo.classList.add("planeInfo");
     // Travel Time
     const planeTravelTime = document.createElement("li")
-    planeTravelTime.innerText = travelTime;
+    planeTravelTime.innerText = `The next gate will take ${travelTime} days to reach.`;
     planeTravelTime.classList.add("planeTravelTime");
     planeInfo.appendChild(planeTravelTime);
-    // Opens in 
+    // Opens/Closes in 
     const planeOpensIn = document.createElement("li");
-    planeOpensIn.innerText = gateClose;
+    planeOpensIn.innerText = `The gate will be ${status} in ${gateClose} days.`;
     planeOpensIn.classList.add("planeOpensIn");
     planeInfo.appendChild(planeOpensIn);
-    // Opens Over
-    const planeOpensOver = document.createElement("li");
-    planeOpensOver.innerText = location;
-    planeOpensOver.classList.add("planeOpensOver");
-    planeInfo.appendChild(planeOpensOver);
 
     planeCard.appendChild(planeInfo);
 

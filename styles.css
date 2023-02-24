@@ -21,15 +21,9 @@ body {
 }
 
 .planeTravelTime {
-    color: pink;
 }
 
 .planeOpensIn {
-    color: blue;
-}
-
-.planeOpensOver {
-    color: grey;
 }
 
 .planeInfo {
@@ -38,4 +32,6 @@ body {
 
 .rerollButton {
     color: black;
+    background-color: pink;
+    border-radius: 20px;
 }
