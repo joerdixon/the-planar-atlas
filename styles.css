@@ -1,0 +1,41 @@
+body {
+    background-color: #222;
+    color: white;
+}
+
+#root {
+    margin: 0 auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#console {
+    border: white 2px solid;
+}
+
+.planeTitle {
+    font-family: sans-serif;
+}
+
+.planeCard {
+    background-color: #111;
+}
+
+.planeTravelTime {
+    color: pink;
+}
+
+.planeOpensIn {
+    color: blue;
+}
+
+.planeOpensOver {
+    color: grey;
+}
+
+.planeInfo {
+    list-style-type: none;
+}
+
+.rerollButton {
+    color: black;
+}
