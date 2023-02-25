@@ -15,13 +15,21 @@
 const arcanaCheck = document.getElementById("arcana-check");
 const startButton = document.getElementById("start-chart");
 const userConsole = document.getElementById("console");
-const chart = document.getElementById("chart")
+const chart = document.getElementById("chart");
+const originSelect = document.getElementById("origin");
+const destinationSelect = document.getElementById("destination");
 
 // Initial Arcana check
 let roll;
 
 // Number of planes to roll
 let planes;
+
+// Plane of origin
+let origin;
+
+// Destination
+let destination;
 
 // Array of all possible planes
 const planarAtlas = [
@@ -120,11 +128,11 @@ const planarAtlas = [
     "The Cloud Reaches",
     "The Cloud Reaches",
     "The Lower Celestial Plane",
-    "??? (96)",
-    "??? (97)",
-    "??? (98)",
-    "??? (99)",
-    "??? (100)",
+    "???",
+    "???",
+    "???",
+    "???",
+    "???",
 ]
 
 // Array of all possible gate statuses.
@@ -164,14 +172,19 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     // Name and Location
     const planeTitle = document.createElement("h1")
     planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = `${name} - ${location}`
+    // If the plane is our destination, put that on the card
+    if (name === destinationSelect.value) {
+        planeTitle.innerText = `Destination: ${name} - ${location}`
+    } else {
+        planeTitle.innerText = `${name} - ${location}`
+    }
     planeCard.appendChild(planeTitle)
     // Travel Info Container
     const planeInfo = document.createElement("ul");
     planeInfo.classList.add("planeInfo");
     // Travel Time
     const planeTravelTime = document.createElement("li")
-    planeTravelTime.innerText = `The next gate will take ${travelTime} days to reach.`;
+    planeTravelTime.innerText = `The gate to ${name} will take ${travelTime} days to reach.`;
     planeTravelTime.classList.add("planeTravelTime");
     planeInfo.appendChild(planeTravelTime);
     // Opens/Closes in 
@@ -187,8 +200,48 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     rerollButton.innerText = "Reroll";
     rerollButton.classList.add("rerollButton");
     planeCard.appendChild(rerollButton);
-    // planeCard.innerText = `A gate to Plane ${name} will be ${status} in ${gateClose} days. It will take ${travelTime} days to get there and the gate will open over ${location}.`
     return planeCard;
+}
+
+// This will always be the first card on the course, indicating where we start.
+function createOriginCard() {
+
+    // Main Container
+    const planeCard = document.createElement("div");
+    planeCard.classList.add("planeCard");
+
+    // Title
+    const planeTitle = document.createElement("h1");
+    planeTitle.classList.add("planeTitle");
+    planeTitle.innerText = `Origin: ${originSelect.value}`;
+
+    // You are Here
+    const planeYAH = document.createElement("h2");
+    planeYAH.classList.add("planeTravelTime");
+    planeYAH.innerText = "The Axiom is here."
+
+    planeCard.appendChild(planeTitle);
+    planeCard.appendChild(planeYAH);
+
+    return (planeCard)
+
+
+}
+
+// This will print a destination card in the case of maximum planes rolled or the Astral Plane.
+function forceDestinationCard() {
+    const lastPlane = {
+        // The name of the plane.
+        name: `Destination: ${destinationSelect.value}`,
+        // Is the gate opening, open, or closing.
+        status: gateStatus[Dice(2) - 1],
+        // Where the gate will open in that plane
+        location: gateLocation[Dice(3) - 1],
+        // How long it will take to get to that gate.
+        travelTime: gateTime[0],
+        // How long until the gate closes.
+        gateClose: gateTime[1]
+    }
 }
 
 // When start button is clicked.
@@ -202,6 +255,12 @@ function Chart() {
         roll = Number(arcanaCheck.value);
         // Reset the input
         arcanaCheck.value = "";
+    }
+
+    // Check if they have selected two different planes.
+    if (originSelect.value === destinationSelect.value) {
+        alert(`You are already in ${originSelect.value} silly!`)
+        return;
     }
 
     // Reset the chart
@@ -223,6 +282,10 @@ function Chart() {
             break;
     }
 
+    alert(`You rolled ${planes} planes!`)
+
+    chart.appendChild(createOriginCard())
+
     // Roll the number of planes specified.
     for (let i = 0; i < planes; i++) {
         const gateTime = determineTiming();
@@ -242,8 +305,13 @@ function Chart() {
 
         // Create and append a plane card to the chart.
         chart.appendChild(createPlaneCard(nextPlane))
+
+        if (nextPlane.name === originSelect.value) {
+            continue;
+        }
+
+        if (nextPlane.name === destinationSelect.value) {
+            return;
+        }
     }
-
-    alert(`You rolled ${planes} planes!`)
-
 }
