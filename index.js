@@ -334,13 +334,14 @@ function Chart() {
             continue;
         }
 
-        // Increment the planeCount if its valid.
         
         // Create and append a plane card to the chart.
         // Add the planeCount to keep track of the order.
         chart.appendChild(createPlaneCard(nextPlane, planeCount))
         
+        // Increment the planeCount if its valid.
         planeCount += 1;
+        
         // If we go to The Astral Plane, the next plane is always our destination.
         if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
             chart.appendChild(forceDestinationCard())
