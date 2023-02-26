@@ -297,8 +297,12 @@ function Chart() {
     // Create a card for the starting plane.
     chart.appendChild(createOriginCard())
 
+    // Counts the planes as they are added
+    const planeCount = 0;
+
     // Roll the number of planes specified.
     for (let i = 0; i < planes; i++) {
+
         const gateTime = determineTiming();
         // Create a plane
         const nextPlane = {
@@ -330,9 +334,13 @@ function Chart() {
             continue;
         }
 
+        // Increment the planeCount if its valid.
+        
         // Create and append a plane card to the chart.
-        chart.appendChild(createPlaneCard(nextPlane))
-
+        // Add the planeCount to keep track of the order.
+        chart.appendChild(createPlaneCard(nextPlane, planeCount))
+        
+        planeCount += 1;
         // If we go to The Astral Plane, the next plane is always our destination.
         if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
             chart.appendChild(forceDestinationCard())
