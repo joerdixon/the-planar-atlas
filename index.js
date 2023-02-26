@@ -1,15 +1,7 @@
 // The Planar Atlas Course Charting Machine
 
 // TODO: Add a button to reroll planes.
-// TODO: Add an exception for the astral plane.
-// TODO: Prevent duplicate planes on route.
-// TODO: Add input for destination plane.
-// TODO: Add input for origin plane.
 // TODO: Add hours for times less than a day.
-
-// Questions:
-// Are these all the avaliable planes to start from/go to 
-
 
 // DOM Selectors
 const arcanaCheck = document.getElementById("arcana-check");
@@ -30,6 +22,9 @@ let origin;
 
 // Destination
 let destination;
+
+// Visited Planes
+let visitedPlanes;
 
 // Array of all possible planes
 const planarAtlas = [
@@ -59,6 +54,7 @@ const planarAtlas = [
     "The Demi-Elemental Plane of Fog",
     "The Demi-Elemental Plane of Steam",
     "The Demi-Elemental Plane of Steam",
+    "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Smoke",
@@ -164,6 +160,14 @@ function determineTiming() {
     }
 }
 
+// When a user hits the reroll button
+function rerollPlane() {
+    // Roll a d4 for planes to be added.
+    const rerollNum = Dice(4);
+    console.log(visitedPlanes);
+    console.log(rerollNum);
+}
+
 // Creates an HTML element to be added to the itinerary.
 function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     // Main Container
@@ -199,7 +203,11 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }) {
     const rerollButton = document.createElement("button");
     rerollButton.innerText = "Reroll";
     rerollButton.classList.add("rerollButton");
-    planeCard.appendChild(rerollButton);
+    rerollButton.setAttribute("onclick", "rerollPlane()")
+    // Skip if 
+    if (name != `Destination: ${destinationSelect.value}`) {
+        planeCard.appendChild(rerollButton);
+    }
     return planeCard;
 }
 
@@ -230,25 +238,25 @@ function createOriginCard() {
 
 // This will print a destination card in the case of maximum planes rolled or the Astral Plane.
 function forceDestinationCard() {
+    const gateTime = determineTiming();
     const lastPlane = {
-        // The name of the plane.
+        // The name of the plane + Destination tag.
         name: `Destination: ${destinationSelect.value}`,
-        // Is the gate opening, open, or closing.
+        // Rest of the object as normal.
         status: gateStatus[Dice(2) - 1],
-        // Where the gate will open in that plane
         location: gateLocation[Dice(3) - 1],
-        // How long it will take to get to that gate.
         travelTime: gateTime[0],
-        // How long until the gate closes.
         gateClose: gateTime[1]
     }
+
+    return (createPlaneCard(lastPlane))
 }
 
 // When start button is clicked.
 function Chart() {
     // Check that they entered something.
     if (arcanaCheck.value === "") {
-        alert("Please enter your roll")
+        alert("Please enter your roll");
         return;
     } else {
         // Store the input as their roll.
@@ -259,12 +267,16 @@ function Chart() {
 
     // Check if they have selected two different planes.
     if (originSelect.value === destinationSelect.value) {
-        alert(`You are already in ${originSelect.value} silly!`)
+        alert(`You are already in ${originSelect.value}!`)
         return;
     }
 
     // Reset the chart
     chart.innerHTML = "";
+
+    // Planes already on the course
+    visitedPlanes = [originSelect.value];
+
 
     // The players roll determines the amount of planes that must be rolled.
     switch (true) {
@@ -282,8 +294,7 @@ function Chart() {
             break;
     }
 
-    alert(`You rolled ${planes} planes!`)
-
+    // Create a card for the starting plane.
     chart.appendChild(createOriginCard())
 
     // Roll the number of planes specified.
@@ -303,15 +314,38 @@ function Chart() {
             gateClose: gateTime[1]
         }
 
-        // Create and append a plane card to the chart.
-        chart.appendChild(createPlaneCard(nextPlane))
+        // If the plane rolled has already been visited
+        if (visitedPlanes.includes(nextPlane.name)) {
+            // Replace the iteration
+            i -= 1;
+            // Skip the iteration
+            continue;
+        }
 
+        // Add the plane to list of planes already on course.
+        visitedPlanes.push(nextPlane.name)
+
+        // If we see our origin plane, skip that iteration before we print.
         if (nextPlane.name === originSelect.value) {
             continue;
         }
 
+        // Create and append a plane card to the chart.
+        chart.appendChild(createPlaneCard(nextPlane))
+
+        // If we go to The Astral Plane, the next plane is always our destination.
+        if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
+            chart.appendChild(forceDestinationCard())
+            return;
+        }
+
+        // If we reach our destination, stop looping.
         if (nextPlane.name === destinationSelect.value) {
             return;
         }
     }
+
+    // Create a destination card if not found within the scheduled planes.
+    chart.appendChild(forceDestinationCard())
+
 }

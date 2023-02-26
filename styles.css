@@ -1,19 +1,49 @@
+:root {
+    /* Fonts */
+    --main-text: 'Kalam', serif;
+    --heading-text: "Merienda", serif;
+    /* Sizing */
+    --text-size: 1.2rem;
+    --heading-size: 2rem;
+    /* Colors */
+    --main-bg: #111;
+    --main-text-color: #fff;
+    --main-alt: #89759F;
+    --highlight: #5e239d;
+}
+
 body {
     background-color: #111;
-    color: white;
+    color: var(--main-text-color);
 }
 
 #root {
     margin: 0 auto;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--main-text)
 }
 
-#console {
-    border: white 2px solid;
-}
-
-#hero {
+#hero { 
     text-align: center;
+    font-size: var(--heading-size);
+}
+
+/* Form Styling */ 
+
+label {
+    font-family: var(--main-text);
+    font-size: var(--text-size);
+}
+
+input[type="number"] {  
+    width: 10vw;
+    padding: 10px;
+    margin: 15px;
+}
+
+select {
+    width: 15vw;
+    padding: 10px;
+    margin: 15px;
 }
 
 #user-input {
@@ -27,30 +57,35 @@ body {
     width: 60px;
     margin: 20px;
 }
+/* Chart Styling */
 
-.input-box {
-    width: 30%;
-    padding: 10px;
-    margin: 15px;
+
+#console {
+    border: white 2px solid;
 }
 
-.planeTitle {
-    font-family: "Papyrus";
-}
+/* Card Styling */
 
 .planeCard {
-    background-color: #222;
+    background-color: var(--highlight);
     padding: 20px;
     margin: 10px;
-    border: white solid 2px;
+    border: var(--main-text-color) solid 2px;
+    font-size: var(--text-size);
     border-radius: 20px;
 }
 
-.planeTravelTime {
+.planeTitle {
+    font-family: var(--heading-text);
+    font-size: var(--heading-size);
+}
+
+
+/* .planeTravelTime {
 }
 
 .planeOpensIn {
-}
+} */
 
 .planeInfo {
     list-style-type: none;
@@ -59,8 +94,8 @@ body {
 }
 
 .rerollButton {
-    color: black;
-    background-color: pink;
+    color: var(--main-text-color);
+    background-color: var(--main-alt);
     border-radius: 20px;
     margin-top: 20px;
     width: 75px;
