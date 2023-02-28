@@ -394,7 +394,7 @@ function Chart() {
 
 // When a user hits the reroll button
 function rerollPlane(event) {
-
+    
     // Rolled planes
     const rerollPlanes = [];
 
@@ -420,10 +420,10 @@ function rerollPlane(event) {
 
     }
 
-    console.log(rerollPlanes)
+    // Replace the rolled plane with the new random planes.
+    courseObjects.splice(index, 1, ...rerollPlanes) 
 
-    // Remove the rolled plane then insert all planes in rerollPlanes
-
-    courseObjects.splice() 
+    // Render the updated chart
+    renderChart(courseObjects)
 
 }
