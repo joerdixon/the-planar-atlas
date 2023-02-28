@@ -26,7 +26,7 @@ let destination;
 // Visited Planes
 let visitedPlanes;
 
-// Indicates whether or not the free swap has been used from Aspiring Navigator feat.
+// Indicates whether or not the free swap has been used from Aspirant Navigator feat.
 let freeRollUsed;
 
 // This will contain an array of objects, each representing a plane on the course.
@@ -195,7 +195,7 @@ function createOriginCard() {
     // Title
     const planeTitle = document.createElement("h1");
     planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = `Origin: ${originSelect.value}`;
+    planeTitle.innerText = `Origin: ${origin}`;
 
     // You are Here
     const planeYAH = document.createElement("h2");
@@ -219,7 +219,7 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     const planeTitle = document.createElement("h1")
     planeTitle.classList.add("planeTitle");
     // If the plane is our destination, put that on the card
-    if (name === destinationSelect.value) {
+    if (name === destination) {
         planeTitle.innerText = `Destination: ${name} - ${location}`
     } else {
         planeTitle.innerText = `${name} - ${location}`
@@ -244,7 +244,7 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     // Reroll Button
     const rerollButton = document.createElement("button");
 
-    // If the free reroll from Aspiring Navigator is still true, indicate.
+    // If the free reroll from Aspirant Navigator is still true, indicate.
     if (freeRollUsed) {
         rerollButton.innerText = "Reroll";
     } else {
@@ -256,7 +256,7 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     rerollButton.addEventListener("click", rerollPlane);
 
     // Skip the destination card.
-    if (name != destinationSelect.value) {
+    if (name != destination) {
         planeCard.appendChild(rerollButton);
     }
 
@@ -269,7 +269,7 @@ function forceDestinationCard() {
     const gateTime = determineTiming();
     const lastPlane = {
         // The name of the plane + Destination tag.
-        name: destinationSelect.value,
+        name: destination,
         // Rest of the object as normal.
         status: gateStatus[Dice(2) - 1],
         location: gateLocation[Dice(3) - 1],
@@ -301,7 +301,7 @@ function determineCourse(numOfPlanes) {
     courseObjects = [];
 
     // Reset the visited planes.
-    visitedPlanes = [originSelect.value];
+    visitedPlanes = [origin];
 
     for (let i = 0; i < numOfPlanes; i++) {
 
@@ -317,12 +317,12 @@ function determineCourse(numOfPlanes) {
         }
 
         // If we see our origin plane, skip that iteration before we print.
-        if (nextPlane.name === originSelect.value) {
+        if (nextPlane.name === origin) {
             continue;
         }
 
         // If we reach our destination, stop looping.
-        if (nextPlane.name === destinationSelect.value) {
+        if (nextPlane.name === destination) {
             return courseObjects;
         }
 
@@ -333,7 +333,7 @@ function determineCourse(numOfPlanes) {
         visitedPlanes.push(nextPlane.name)
 
         // If we go to The Astral Plane, the next plane is always our destination.
-        if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
+        if (nextPlane.name === "The Astral Plane" && destination != "The Astral Plane") {
             return courseObjects;
         }
     }
@@ -392,7 +392,7 @@ function Chart() {
     // Record the origin.
     origin = originSelect.value;
 
-    // Reset the free reroll from Aspiring Navigator.
+    // Reset the free reroll from Aspirant Navigator.
     freeRollUsed = false;
 
     // The players roll determines the amount of planes that must be rolled.
