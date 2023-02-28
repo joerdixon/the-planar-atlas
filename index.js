@@ -160,7 +160,7 @@ function generatePlane() {
         // The name of the plane.
         name: planarAtlas[Dice(100) - 1],
         // Is the gate opening, open, or closing.
-        statuws: gateStatus[Dice(2) - 1],
+        status: gateStatus[Dice(2) - 1],
         // Where the gate will open in that plane
         location: gateLocation[Dice(3) - 1],
         // How long it will take to get to that gate.
@@ -322,11 +322,13 @@ function determineCourse(numOfPlanes) {
         // Add the plane to list of planes already on course.
         visitedPlanes.push(nextPlane.name)
 
+        console.log(courseObjects)
         // If we go to The Astral Plane, the next plane is always our destination.
         if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
             return courseObjects;
         }
     }
+
 
     return courseObjects;
 }
@@ -402,7 +404,6 @@ function rerollPlane(event) {
     const index = event.target.attributes[1].value;
 
     // Roll a d4 for planes to be added.
-    // TODO: Still giving duplicate planes.
     const rerollNum = Dice(4);
     for (let i = 0; i < (rerollNum); i++) {
 
@@ -418,6 +419,8 @@ function rerollPlane(event) {
         }
 
         rerollPlanes.push(rerollPlane);
+
+        visitedPlanes.push(rerollPlane.name)
 
     }
 

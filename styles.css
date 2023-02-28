@@ -70,11 +70,11 @@ select {
 .planeCard {
     background-color: var(--highlight);
     padding: 20px;
-    margin: 10px;
+    margin: 10px 0;
     border: var(--main-text-color) solid 2px;
     font-size: var(--text-size);
     border-radius: 20px;
-    animation: slidein 1s ease-in  forwards;
+    animation: slidein 1s ease-in forwards;
 }
 
 .planeTitle {
@@ -94,14 +94,6 @@ select {
   animation-delay: 300ms;
 }
 
-
-
-/* .planeTravelTime {
-}
-
-.planeOpensIn {
-} */
-
 .planeInfo {
     list-style-type: none;
     padding: 0;
@@ -117,26 +109,14 @@ select {
     height: 30px;
 }
 
-from {
-    margin-left: 100%;
-    width: 300%;
-}
-
-to {
-    margin-left: 0%;
-    width: 100%;
-}
-
 /* Animations */
 
 @keyframes slidein {
     from {
-        margin-left: 100%;
-        width: 300%;
+        transform: translateX(-150%);
     }
 
     to {
-        margin-left: 0%;
-        width: 100%;
+        transform: translateX(0%);
     }
 }
