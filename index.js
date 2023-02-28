@@ -402,6 +402,7 @@ function rerollPlane(event) {
     const index = event.target.attributes[1].value;
 
     // Roll a d4 for planes to be added.
+    // TODO: Still giving duplicate planes.
     const rerollNum = Dice(4);
     for (let i = 0; i < (rerollNum); i++) {
 

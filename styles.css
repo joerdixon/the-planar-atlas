@@ -22,19 +22,19 @@ body {
     font-family: var(--main-text)
 }
 
-#hero { 
+#hero {
     text-align: center;
     font-size: var(--heading-size);
 }
 
-/* Form Styling */ 
+/* Form Styling */
 
 label {
     font-family: var(--main-text);
     font-size: var(--text-size);
 }
 
-input[type="number"] {  
+input[type="number"] {
     width: 10vw;
     padding: 10px;
     margin: 15px;
@@ -57,6 +57,7 @@ select {
     width: 60px;
     margin: 20px;
 }
+
 /* Chart Styling */
 
 
@@ -73,12 +74,26 @@ select {
     border: var(--main-text-color) solid 2px;
     font-size: var(--text-size);
     border-radius: 20px;
+    animation: slidein 1s ease-in  forwards;
 }
 
 .planeTitle {
     font-family: var(--heading-text);
     font-size: var(--heading-size);
 }
+
+#chart:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+#chart:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+#chart:nth-child(3) {
+  animation-delay: 300ms;
+}
+
 
 
 /* .planeTravelTime {
@@ -100,4 +115,28 @@ select {
     margin-top: 20px;
     width: 75px;
     height: 30px;
-}   
+}
+
+from {
+    margin-left: 100%;
+    width: 300%;
+}
+
+to {
+    margin-left: 0%;
+    width: 100%;
+}
+
+/* Animations */
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
