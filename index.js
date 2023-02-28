@@ -26,6 +26,9 @@ let destination;
 // Visited Planes
 let visitedPlanes;
 
+// Indicates whether or not the free swap has been used from Aspiring Navigator feat.
+let freeRollUsed;
+
 // This will contain an array of objects, each representing a plane on the course.
 let courseObjects = [];
 
@@ -240,7 +243,14 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
 
     // Reroll Button
     const rerollButton = document.createElement("button");
-    rerollButton.innerText = "Reroll";
+
+    // If the free reroll from Aspiring Navigator is still true, indicate.
+    if (freeRollUsed) {
+        rerollButton.innerText = "Reroll";
+    } else {
+        rerollButton.innerText = "Swap"
+    }
+
     rerollButton.classList.add("rerollButton");
     rerollButton.setAttribute("data-index", planeCount);
     rerollButton.addEventListener("click", rerollPlane);
@@ -382,6 +392,9 @@ function Chart() {
     // Record the origin.
     origin = originSelect.value;
 
+    // Reset the free reroll from Aspiring Navigator.
+    freeRollUsed = false;
+
     // The players roll determines the amount of planes that must be rolled.
     planes = rollPlanes(roll)
 
@@ -403,7 +416,13 @@ function rerollPlane(event) {
     const index = event.target.attributes[1].value;
 
     // Roll a d4 for planes to be added.
-    const rerollNum = Dice(4);
+    let rerollNum = Dice(4);
+
+    if (!freeRollUsed) {
+        rerollNum = 1;
+        freeRollUsed = true;
+    }
+
     for (let i = 0; i < (rerollNum); i++) {
 
         // Make a new plane.
