@@ -208,7 +208,7 @@ function createOriginCard() {
 
 // Creates an HTML element to be added to the itinerary.
 function createPlaneCard({ name, status, location, travelTime, gateClose }, planeCount) {
-    console.log(planeCount)
+
     // Main Container
     const planeCard = document.createElement("div");
     planeCard.classList.add("planeCard");
@@ -324,7 +324,6 @@ function determineCourse(numOfPlanes) {
 
         // If we go to The Astral Plane, the next plane is always our destination.
         if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
-            // chart.appendChild(forceDestinationCard())
             return courseObjects;
         }
     }
@@ -376,6 +375,12 @@ function Chart() {
         return;
     }
 
+    // Record the destination.
+    destination = destinationSelect.value;
+
+    // Record the origin.
+    origin = originSelect.value;
+
     // The players roll determines the amount of planes that must be rolled.
     planes = rollPlanes(roll)
 
@@ -389,12 +394,36 @@ function Chart() {
 
 // When a user hits the reroll button
 function rerollPlane(event) {
+
+    // Rolled planes
+    const rerollPlanes = [];
+
     // Note the index of the card being rerolled.
     const index = event.target.attributes[1].value;
-    console.log(index)
+
     // Roll a d4 for planes to be added.
     const rerollNum = Dice(4);
     for (let i = 0; i < (rerollNum); i++) {
 
+        // Make a new plane.
+        let rerollPlane = generatePlane();
+
+        // If the plane rolled has already been visited.
+        if (visitedPlanes.includes(rerollPlane.name) || rerollPlane.name === destination) {
+            // Replace the iteration
+            i -= 1;
+            // Skip the iteration
+            continue;
+        }
+
+        rerollPlanes.push(rerollPlane);
+
     }
+
+    console.log(rerollPlanes)
+
+    // Remove the rolled plane then insert all planes in rerollPlanes
+
+    courseObjects.splice() 
+
 }
