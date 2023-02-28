@@ -1,15 +1,15 @@
 // The Planar Atlas Course Charting Machine
 
-// TODO: Add a button to reroll planes.
 // TODO: Add hours for times less than a day.
 
 // DOM Selectors
-const arcanaCheck = document.getElementById("arcana-check");
-const startButton = document.getElementById("start-chart");
 const userConsole = document.getElementById("console");
 const chart = document.getElementById("chart");
+// Form
+const arcanaCheck = document.getElementById("arcana-check");
 const originSelect = document.getElementById("origin");
 const destinationSelect = document.getElementById("destination");
+const startButton = document.getElementById("start-chart");
 
 // Initial Arcana check
 let roll;
@@ -183,7 +183,6 @@ function determineTiming() {
         return timing;
     }
 }
-
 
 // This will always be the first card on the course, indicating where we start.
 function createOriginCard() {
@@ -363,7 +362,6 @@ function renderChart(planeObjArray) {
 
     // Create a card for the destination plane.
     chart.appendChild(forceDestinationCard())
-
 }
 
 // When start button is clicked.
@@ -403,12 +401,11 @@ function Chart() {
 
     // Render the course on the dom.
     renderChart(course)
-
 }
 
 // When a user hits the reroll button
 function rerollPlane(event) {
-    
+
     // Rolled planes
     const rerollPlanes = [];
 
@@ -418,6 +415,7 @@ function rerollPlane(event) {
     // Roll a d4 for planes to be added.
     let rerollNum = Dice(4);
 
+    // If they still have a free roll, give it to them and indicate it's been used.
     if (!freeRollUsed) {
         rerollNum = 1;
         freeRollUsed = true;
@@ -437,14 +435,13 @@ function rerollPlane(event) {
             continue;
         }
 
+        // Add the new plane to both arrays tracking our course.
         rerollPlanes.push(rerollPlane);
-
         visitedPlanes.push(rerollPlane.name)
-
     }
 
     // Replace the rolled plane with the new random planes.
-    courseObjects.splice(index, 1, ...rerollPlanes) 
+    courseObjects.splice(index, 1, ...rerollPlanes)
 
     // Render the updated chart
     renderChart(courseObjects)
