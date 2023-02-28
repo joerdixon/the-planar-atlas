@@ -114,3 +114,14 @@ select {
         transform: translateX(0%);
     }
 }
+
+/* Mobile Styling */
+
+@media screen and (max-width: 900px) {
+    .planeCard {
+        font-size: .8rem;
+    }
+    .planeTitle {
+        font-size: 1rem;
+    }
+}
