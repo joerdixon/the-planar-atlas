@@ -246,7 +246,7 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     rerollButton.addEventListener("click", rerollPlane);
 
     // Skip the destination card.
-    if (name != `Destination: ${destinationSelect.value}`) {
+    if (name != destinationSelect.value) {
         planeCard.appendChild(rerollButton);
     }
 
