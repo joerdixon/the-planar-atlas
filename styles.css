@@ -35,13 +35,13 @@ label {
 }
 
 input[type="number"] {
-    width: 10vw;
+    width: 50px;
     padding: 10px;
     margin: 15px;
 }
 
 select {
-    width: 15vw;
+    width: 220px;
     padding: 10px;
     margin: 15px;
 }
@@ -56,6 +56,10 @@ select {
 #start-chart {
     width: 60px;
     margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--highlight);
+    color: var(--main-text-color);
 }
 
 /* Chart Styling */
