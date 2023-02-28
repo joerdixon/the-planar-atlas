@@ -70,10 +70,10 @@ const planarAtlas = [
     "Avernus",
     "Avernus",
     "Avernus",
-    "Avernus",
-    "Avernus",
-    "Avernus",
-    "Avernus",
+    "The Boglands",
+    "The Boglands",
+    "The Boglands",
+    "The Boglands",
     "The Abyss",
     "The Abyss",
     "The Abyss",
@@ -259,7 +259,7 @@ function forceDestinationCard() {
     const gateTime = determineTiming();
     const lastPlane = {
         // The name of the plane + Destination tag.
-        name: `Destination: ${destinationSelect.value}`,
+        name: destinationSelect.value,
         // Rest of the object as normal.
         status: gateStatus[Dice(2) - 1],
         location: gateLocation[Dice(3) - 1],
@@ -322,7 +322,6 @@ function determineCourse(numOfPlanes) {
         // Add the plane to list of planes already on course.
         visitedPlanes.push(nextPlane.name)
 
-        console.log(courseObjects)
         // If we go to The Astral Plane, the next plane is always our destination.
         if (nextPlane.name === "The Astral Plane" && destinationSelect.value != "The Astral Plane") {
             return courseObjects;
@@ -411,7 +410,8 @@ function rerollPlane(event) {
         let rerollPlane = generatePlane();
 
         // If the plane rolled has already been visited.
-        if (visitedPlanes.includes(rerollPlane.name) || rerollPlane.name === destination) {
+        // The Astral plane cannot be rolled for after the initial course is determined.
+        if (visitedPlanes.includes(rerollPlane.name) || rerollPlane.name === destination || rerollPlane.name === "The Astral Plane") {
             // Replace the iteration
             i -= 1;
             // Skip the iteration
