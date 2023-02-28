@@ -26,6 +26,7 @@ let destination;
 // Visited Planes
 let visitedPlanes;
 
+// This will contain an array of objects, each representing a plane on the course.
 let courseObjects = [];
 
 // Array of all possible planes
@@ -56,7 +57,6 @@ const planarAtlas = [
     "The Demi-Elemental Plane of Fog",
     "The Demi-Elemental Plane of Steam",
     "The Demi-Elemental Plane of Steam",
-    "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Mud",
     "The Demi-Elemental Plane of Smoke",
@@ -182,10 +182,10 @@ function determineTiming() {
 }
 
 // When a user hits the reroll button
-function rerollPlane() {
+function rerollPlane(event) {
+    console.log(event.target);    
     // Roll a d4 for planes to be added.
     const rerollNum = Dice(4);
-    console.log(visitedPlanes);
     console.log(rerollNum);
 }
 
@@ -225,7 +225,8 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     const rerollButton = document.createElement("button");
     rerollButton.innerText = "Reroll";
     rerollButton.classList.add("rerollButton");
-    rerollButton.setAttribute("onclick", "rerollPlane()");
+    rerollButton.setAttribute("data-index", planeCount);
+    rerollButton.addEventListener("click", rerollPlane);
 
     // Skip the destination card.
     if (name != `Destination: ${destinationSelect.value}`) {
@@ -305,6 +306,7 @@ function renderChart(planeObjArray) {
     // Create an element for each plane on the course.
     for (planes in planeObjArray) {
         chart.appendChild(createPlaneCard(planeObjArray[planes], planeCount))
+        // Increment the plane count.
         planeCount += 1
     }
 
