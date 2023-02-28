@@ -160,7 +160,7 @@ function generatePlane() {
         // The name of the plane.
         name: planarAtlas[Dice(100) - 1],
         // Is the gate opening, open, or closing.
-        status: gateStatus[Dice(2) - 1],
+        statuws: gateStatus[Dice(2) - 1],
         // Where the gate will open in that plane
         location: gateLocation[Dice(3) - 1],
         // How long it will take to get to that gate.
@@ -181,12 +181,29 @@ function determineTiming() {
     }
 }
 
-// When a user hits the reroll button
-function rerollPlane(event) {
-    console.log(event.target);    
-    // Roll a d4 for planes to be added.
-    const rerollNum = Dice(4);
-    console.log(rerollNum);
+
+// This will always be the first card on the course, indicating where we start.
+function createOriginCard() {
+
+    // Main Container
+    const planeCard = document.createElement("div");
+    planeCard.classList.add("planeCard");
+
+    // Title
+    const planeTitle = document.createElement("h1");
+    planeTitle.classList.add("planeTitle");
+    planeTitle.innerText = `Origin: ${originSelect.value}`;
+
+    // You are Here
+    const planeYAH = document.createElement("h2");
+    planeYAH.classList.add("planeTravelTime");
+    planeYAH.innerText = "The Axiom is here."
+
+    planeCard.appendChild(planeTitle);
+    planeCard.appendChild(planeYAH);
+
+    // Return the origin card element.
+    return (planeCard)
 }
 
 // Creates an HTML element to be added to the itinerary.
@@ -237,30 +254,6 @@ function createPlaneCard({ name, status, location, travelTime, gateClose }, plan
     return planeCard;
 }
 
-// This will always be the first card on the course, indicating where we start.
-function createOriginCard() {
-
-    // Main Container
-    const planeCard = document.createElement("div");
-    planeCard.classList.add("planeCard");
-
-    // Title
-    const planeTitle = document.createElement("h1");
-    planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = `Origin: ${originSelect.value}`;
-
-    // You are Here
-    const planeYAH = document.createElement("h2");
-    planeYAH.classList.add("planeTravelTime");
-    planeYAH.innerText = "The Axiom is here."
-
-    planeCard.appendChild(planeTitle);
-    planeCard.appendChild(planeYAH);
-
-    // Return the origin card element.
-    return (planeCard)
-}
-
 // This will print a destination card in the case of maximum planes rolled or the Astral Plane.
 function forceDestinationCard() {
     const gateTime = determineTiming();
@@ -289,30 +282,6 @@ function rollPlanes(arcanaRoll) {
         case (arcanaRoll > 15):
             return Dice(8);
     }
-}
-
-// This function will take an array of objects and render them one at a time, noting their order. 
-function renderChart(planeObjArray) {
-
-    // Reset the chart
-    chart.innerHTML = "";
-
-    // Counts the planes to keep the order.
-    let planeCount = 0;
-
-    // Create a card for the starting plane.
-    chart.appendChild(createOriginCard())
-
-    // Create an element for each plane on the course.
-    for (planes in planeObjArray) {
-        chart.appendChild(createPlaneCard(planeObjArray[planes], planeCount))
-        // Increment the plane count.
-        planeCount += 1
-    }
-
-    // Create a card for the destination plane.
-    chart.appendChild(forceDestinationCard())
-
 }
 
 // This function will return an initial course in an array of objects.
@@ -363,6 +332,30 @@ function determineCourse(numOfPlanes) {
     return courseObjects;
 }
 
+// This function will take an array of objects and render them one at a time, noting their order. 
+function renderChart(planeObjArray) {
+
+    // Reset the chart
+    chart.innerHTML = "";
+
+    // Counts the planes to keep the order.
+    let planeCount = 0;
+
+    // Create a card for the starting plane.
+    chart.appendChild(createOriginCard())
+
+    // Create an element for each plane on the course.
+    for (planes in planeObjArray) {
+        chart.appendChild(createPlaneCard(planeObjArray[planes], planeCount))
+        // Increment the plane count.
+        planeCount += 1
+    }
+
+    // Create a card for the destination plane.
+    chart.appendChild(forceDestinationCard())
+
+}
+
 // When start button is clicked.
 function Chart() {
 
@@ -392,4 +385,16 @@ function Chart() {
     // Render the course on the dom.
     renderChart(course)
 
+}
+
+// When a user hits the reroll button
+function rerollPlane(event) {
+    // Note the index of the card being rerolled.
+    const index = event.target.attributes[1].value;
+    console.log(index)
+    // Roll a d4 for planes to be added.
+    const rerollNum = Dice(4);
+    for (let i = 0; i < (rerollNum); i++) {
+
+    }
 }
