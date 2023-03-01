@@ -20,8 +20,10 @@
     <div id="root">
         <h1 id="hero">The Planar Atlas</h1>
         <form id='user-input'>
+            <!-- Input for user arcana check. -->
             <label for="arcana-check">Arcana Check:</label>
             <input type="number" id="arcana-check">
+            <!-- Dropdown for selecting origin plane. -->
             <label for="origin">Origin:</label>
             <select name="origin" id="origin">
                 <option value="The Mortal Kingdoms">The Mortal Kingdoms</option>
@@ -48,9 +50,9 @@
                 <option value="Limbo">Limbo</option>
                 <option value="The Cloud Reaches">The Cloud Reaches</option>
                 <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
-                <!-- Figure out what to do about undisclosed planes. -->
                 <option value="???">???</option>
             </select>
+            <!-- Dropdown for selecting destination plane. -->
             <label for="destination">Destination:</label>
             <select name="destination" id="destination">
                 <option value="The Mortal Kingdoms">The Mortal Kingdoms</option>
@@ -77,7 +79,6 @@
                 <option value="Limbo">Limbo</option>
                 <option value="The Cloud Reaches">The Cloud Reaches</option>
                 <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
-                <!-- Figure out what to do about undisclosed planes. -->
                 <option value="???">???</option>
             </select>
             <button id='start-chart' type="button" onclick="Chart()">Chart a Course!</button>

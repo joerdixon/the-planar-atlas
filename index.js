@@ -1,6 +1,8 @@
 // The Planar Atlas Course Charting Machine
 
 // TODO: Add hours for times less than a day.
+// TODO: Add console for logging each change and course generation.
+// TODO: Better card layout.
 
 // DOM Selectors
 const userConsole = document.getElementById("console");
@@ -176,7 +178,10 @@ function generatePlane() {
 // Rolls for the travel time and gate close time.
 // The first number in the return array will always be the travel time.
 function determineTiming() {
+    // Roll two d12.
     const timing = [Dice(12), Dice(12)]
+    // The first number represents the travel time to the gate which should always be lower then the gate close time.
+    // The first number in the array should always be the lower of the two.
     if (timing[0] > timing[1]) {
         return [timing[1], timing[0]];
     } else {
