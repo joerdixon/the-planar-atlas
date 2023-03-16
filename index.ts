@@ -23,13 +23,13 @@ let planes;
 let origin: string;
 
 // Destination
-let destination;
+let destination: string;
 
 // Visited Planes
-let visitedPlanes;
+let visitedPlanes: string[];
 
 // Indicates whether or not the free swap has been used from Aspirant Navigator feat.
-let freeRollUsed;
+let freeRollUsed: boolean;
 
 // This will contain an array of objects, each representing a plane on the course.
 let courseObjects = [];
@@ -154,10 +154,6 @@ const gateLocation = [
 // Dice Roller w/ param for sides.
 function Dice(sides) {
     return Math.floor(Math.random() * sides) + 1;
-}
-
-function checkInput() {
-
 }
 
 // Returns a single plane random plane object.
@@ -312,6 +308,10 @@ function determineCourse(numOfPlanes) {
     visitedPlanes = [origin];
 
     for (let i = 0; i < numOfPlanes; i++) {
+
+        if (origin === "The Astral Plane") {
+            return courseObjects;
+        }
 
         // Create a random plane
         const nextPlane = generatePlane();

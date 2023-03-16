@@ -151,8 +151,6 @@ var gateLocation = [
 function Dice(sides) {
     return Math.floor(Math.random() * sides) + 1;
 }
-function checkInput() {
-}
 // Returns a single plane random plane object.
 function generatePlane() {
     // Generate the timing.
@@ -286,6 +284,9 @@ function determineCourse(numOfPlanes) {
     // Reset the visited planes.
     visitedPlanes = [origin];
     for (var i = 0; i < numOfPlanes; i++) {
+        if (origin === "The Astral Plane") {
+            return courseObjects;
+        }
         // Create a random plane
         var nextPlane = generatePlane();
         // If the plane rolled has already been visited
