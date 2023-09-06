@@ -172,8 +172,8 @@ function generatePlane() {
 // The first number in the return array will always be the travel time.
 function determineTiming() {
     // Roll 2d12.
-    // UPDATE: Wings 2 Acquired! Now rolling 2d6.
-    var timing = [Dice(6), Dice(6)];
+    // UPDATE: Wings 2 Acquired! Now rolling 1d6 for travel time and 1d12 for gate close time.
+    var timing = [Dice(6), Dice(12)];
     // The first number represents the travel time to the gate which should always be lower then the gate close time.
     // The first number in the array should always be the lower of the two.
     if (timing[0] > timing[1]) {
