@@ -93,20 +93,29 @@ select {
 
 .planeCard {
     background-color: var(--highlight);
-    width: 80%;
+    width: 82%;
     padding: 20px;
     font-size: var(--text-size);
     animation: slidein 1s ease-in forwards;
 }
 
 .planeChip {
-    width: 10%;
+    width: 8%;
     display: inline-block;
 }
 
 .planeTitle {
     font-family: var(--heading-text);
     font-size: var(--heading-size);
+    margin: 0;
+}
+
+.planeLocation {
+    font-weight: normal;
+    font-size: 1rem;
+    color: #CCC;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .planeInfo {
@@ -123,11 +132,15 @@ select {
     align-items: center;
 }
 
-.planeTravelLabel {}
+.planeTravelLabel,
+.planeOpensInLabel {
+    margin:0;
+}
 
 .planeTravelNumber,
 .planeOpensInNumber {
     font-weight: bold;
+    margin:0;
 }
 
 .rerollButton {
