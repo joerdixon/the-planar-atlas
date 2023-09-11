@@ -207,17 +207,22 @@ function createPlaneCard(_a, planeCount) {
     // Main Container
     var planeCard = document.createElement("div");
     planeCard.classList.add("planeCard");
-    // Name and Location
+    // Name
     var planeTitle = document.createElement("h1");
     planeTitle.classList.add("planeTitle");
     // If the plane is our destination, put that on the card
     if (name === destination) {
-        planeTitle.innerText = "Destination: ".concat(name, " - ").concat(location);
+        planeTitle.innerText = "Destination: ".concat(name)
     }
     else {
-        planeTitle.innerText = "".concat(name, " - ").concat(location);
+        planeTitle.innerText = "".concat(name)
     }
     planeCard.appendChild(planeTitle);
+    // Location
+    var planeLocation = document.createElement("h2");
+    planeLocation.classList.add("planeLocation");
+    planeLocation.innerText = "".concat(location);
+    planeCard.appendChild(planeLocation);
     // Travel Info Container
     var planeInfo = document.createElement("ul");
     planeInfo.classList.add("planeInfo");
