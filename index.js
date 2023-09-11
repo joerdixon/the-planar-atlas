@@ -183,10 +183,9 @@ function determineTiming() {
         return timing;
     }
 }
-
 // Returns a hex color code for the plane.
 function determineColor(plane) {
-    switch(plane) {
+    switch (plane) {
         case "The Astral Plane": return "#000000";
         case "Elemental Plane of Earth": return "#663300";
         case "Elemental Plane of Water": return "#0000FF";
@@ -215,7 +214,6 @@ function determineColor(plane) {
         default: return "#FFFFFF";
     }
 }
-
 // This will always be the first card on the course, indicating where we start.
 function createOriginCard() {
     // Main Container
