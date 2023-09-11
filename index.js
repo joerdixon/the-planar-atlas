@@ -255,6 +255,8 @@ function createPlaneCard(_a, planeCount) {
     // Main Container
     var planeParent = document.createElement("div");
     planeParent.classList.add("planeParent");
+    // Style attribute for animation timing.
+    planeParent.style.setProperty("--planeCount", planeCount + 1);
 
     // Plane Chip -------------------------------------------------------------
     var planeChip = document.createElement("div");
@@ -360,7 +362,7 @@ function forceDestinationCard() {
         travelTime: gateTime[0],
         gateClose: gateTime[1]
     };
-    return (createPlaneCard(lastPlane, 100));
+    return (createPlaneCard(lastPlane, visitedPlanes.length - 1));
 }
 // This function returns a number of planes based on their Arcana check.
 function rollPlanes(arcanaRoll) {
