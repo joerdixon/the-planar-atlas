@@ -222,11 +222,14 @@ function createOriginCard() {
     var planeParent = document.createElement("div");
     planeParent.classList.add("planeParent");
 
+    // Color Chip
     var planeChip = document.createElement("div");
     planeChip.classList.add("planeChip");
     planeChip.innerText = "";
+    planeChip.style.backgroundColor = determineColor(origin);
     planeParent.appendChild(planeChip);
 
+    // Details Container
     var planeCard = document.createElement("div");
     planeCard.classList.add("planeCard");
     // Title
@@ -257,6 +260,7 @@ function createPlaneCard(_a, planeCount) {
     // Plane Chip -------------------------------------------------------------
     var planeChip = document.createElement("div");
     planeChip.classList.add("planeChip");
+    planeChip.style.backgroundColor = determineColor(name);
     planeChip.innerText = "";
     planeParent.appendChild(planeChip);
 
