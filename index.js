@@ -15,6 +15,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 // DOM Selectors
 var userConsole = document.getElementById("console");
 var chart = document.getElementById("chart");
+var form = document.getElementById("user-input");
+var hero = document.getElementById("hero");
 // Form
 var arcanaCheck = document.getElementById("arcana-check");
 var originSelect = document.getElementById("origin");
@@ -417,6 +419,8 @@ function determineCourse(numOfPlanes) {
 }
 // This function will take an array of objects and render them one at a time, noting their order. 
 function renderChart(planeObjArray) {
+    // Remove the form
+    form.innerHTML = "";
     // Reset the chart
     chart.innerHTML = "";
     // Counts the planes to keep the order.
@@ -431,6 +435,15 @@ function renderChart(planeObjArray) {
     }
     // Create a card for the destination plane.
     chart.appendChild(forceDestinationCard());
+    // Create refresh button
+    var newChart = document.createElement("button");
+    newChart.classList.add("newChart");
+    newChart.innerHTML = "New Chart";
+    newChart.addEventListener("click", function () {
+        // Refresh the browser.
+        location.reload();
+    });
+    hero.appendChild(newChart);
 }
 // When start button is clicked.
 function Chart() {

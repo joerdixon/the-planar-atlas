@@ -20,69 +20,69 @@
     <div id="root">
         <h1 id="hero">The Planar Atlas</h1>
         <form id='user-input'>
-            <!-- Input for user arcana check. -->
-            <label for="arcana-check">Arcana Check:</label>
-            <input type="number" id="arcana-check">
-            <!-- Dropdown for selecting origin plane. -->
-            <label for="origin">Origin:</label>
-            <select name="origin" id="origin">
-                <option value="The Mortal Kingdoms" selected>The Mortal Kingdoms</option>
-                <option value="The Astral Plane">The Astral Plane</option>
-                <option value="Elemental Plane of Earth">Elemental Plane of Earth</option>
-                <option value="Elemental Plane of Water">Elemental Plane of Water</option>
-                <option value="Elemental Plane of Fire">Elemental Plane of Fire</option>
-                <option value="Elemental Plane of Air">Elemental Plane of Air</option>
-                <option value="Demi-Elemental Plane of Fog">Demi-Elemental Plane of Fog</option>
-                <option value="Demi-Elemental Plane of Steam">Demi-Elemental Plane of Steam</option>
-                <option value="Demi-Elemental Plane of Mud">Demi-Elemental Plane of Mud</option>
-                <option value="Demi-Elemental Plane of Smoke">Demi-Elemental Plane of Smoke</option>
-                <option value="Demi-Elemental Plane of Sand">Demi-Elemental Plane of Sand</option>
-                <option value="Avernus">Avernus</option>
-                <option value="The Abyss">The Abyss</option>
-                <option value="Githgarden">Githgarden</option>
-                <option value="The Blood Flats">The Blood Flats</option>
-                <option value="Axiom">Axiom</option>
-                <option value="Arcadia">Arcadia</option>
-                <option value="The Boglands">The Boglands</option>
-                <option value="Incarnum">Incarnum</option>
-                <option value="The Feywilds">The Feywilds</option>
-                <option value="The Shadow Fell">The Shadow Fell</option>
-                <option value="Limbo">Limbo</option>
-                <option value="The Cloud Reaches">The Cloud Reaches</option>
-                <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
-                <option value="???">???</option>
-            </select>
-            <!-- Dropdown for selecting destination plane. -->
-            <label for="destination">Destination:</label>
-            <select name="destination" id="destination">
-                <option value="The Mortal Kingdoms">The Mortal Kingdoms</option>
-                <option value="The Astral Plane" selected>The Astral Plane</option>
-                <option value="Elemental Plane of Earth">Elemental Plane of Earth</option>
-                <option value="Elemental Plane of Water">Elemental Plane of Water</option>
-                <option value="Elemental Plane of Fire">Elemental Plane of Fire</option>
-                <option value="Elemental Plane of Air">Elemental Plane of Air</option>
-                <option value="Demi-Elemental Plane of Fog">Demi-Elemental Plane of Fog</option>
-                <option value="Demi-Elemental Plane of Steam">Demi-Elemental Plane of Steam</option>
-                <option value="Demi-Elemental Plane of Mud">Demi-Elemental Plane of Mud</option>
-                <option value="Demi-Elemental Plane of Smoke">Demi-Elemental Plane of Smoke</option>
-                <option value="Demi-Elemental Plane of Sand">Demi-Elemental Plane of Sand</option>
-                <option value="Avernus">Avernus</option>
-                <option value="The Abyss">The Abyss</option>
-                <option value="Githgarden">Githgarden</option>
-                <option value="The Blood Flats">The Blood Flats</option>
-                <option value="Axiom">Axiom</option>
-                <option value="Arcadia">Arcadia</option>
-                <option value="The Boglands">The Boglands</option>
-                <option value="Incarnum">Incarnum</option>
-                <option value="The Feywilds">The Feywilds</option>
-                <option value="The Shadow Fell">The Shadow Fell</option>
-                <option value="Limbo">Limbo</option>
-                <option value="The Cloud Reaches">The Cloud Reaches</option>
-                <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
-                <option value="???">???</option>
-            </select>
-            <!-- Start Button -->
-            <button id='start-chart' type="button" onclick="Chart()">Chart a Course!</button>
+                <!-- Dropdown for selecting origin plane. -->
+                <label for="origin">Origin:</label>
+                <select name="origin" id="origin">
+                    <option value="The Mortal Kingdoms" selected>The Mortal Kingdoms</option>
+                    <option value="The Astral Plane">The Astral Plane</option>
+                    <option value="Elemental Plane of Earth">Elemental Plane of Earth</option>
+                    <option value="Elemental Plane of Water">Elemental Plane of Water</option>
+                    <option value="Elemental Plane of Fire">Elemental Plane of Fire</option>
+                    <option value="Elemental Plane of Air">Elemental Plane of Air</option>
+                    <option value="Demi-Elemental Plane of Fog">Demi-Elemental Plane of Fog</option>
+                    <option value="Demi-Elemental Plane of Steam">Demi-Elemental Plane of Steam</option>
+                    <option value="Demi-Elemental Plane of Mud">Demi-Elemental Plane of Mud</option>
+                    <option value="Demi-Elemental Plane of Smoke">Demi-Elemental Plane of Smoke</option>
+                    <option value="Demi-Elemental Plane of Sand">Demi-Elemental Plane of Sand</option>
+                    <option value="Avernus">Avernus</option>
+                    <option value="The Abyss">The Abyss</option>
+                    <option value="Githgarden">Githgarden</option>
+                    <option value="The Blood Flats">The Blood Flats</option>
+                    <option value="Axiom">Axiom</option>
+                    <option value="Arcadia">Arcadia</option>
+                    <option value="The Boglands">The Boglands</option>
+                    <option value="Incarnum">Incarnum</option>
+                    <option value="The Feywilds">The Feywilds</option>
+                    <option value="The Shadow Fell">The Shadow Fell</option>
+                    <option value="Limbo">Limbo</option>
+                    <option value="The Cloud Reaches">The Cloud Reaches</option>
+                    <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
+                    <option value="???">???</option>
+                </select>
+                <!-- Dropdown for selecting destination plane. -->
+                <label for="destination">Destination:</label>
+                <select name="destination" id="destination">
+                    <option value="The Mortal Kingdoms">The Mortal Kingdoms</option>
+                    <option value="The Astral Plane" selected>The Astral Plane</option>
+                    <option value="Elemental Plane of Earth">Elemental Plane of Earth</option>
+                    <option value="Elemental Plane of Water">Elemental Plane of Water</option>
+                    <option value="Elemental Plane of Fire">Elemental Plane of Fire</option>
+                    <option value="Elemental Plane of Air">Elemental Plane of Air</option>
+                    <option value="Demi-Elemental Plane of Fog">Demi-Elemental Plane of Fog</option>
+                    <option value="Demi-Elemental Plane of Steam">Demi-Elemental Plane of Steam</option>
+                    <option value="Demi-Elemental Plane of Mud">Demi-Elemental Plane of Mud</option>
+                    <option value="Demi-Elemental Plane of Smoke">Demi-Elemental Plane of Smoke</option>
+                    <option value="Demi-Elemental Plane of Sand">Demi-Elemental Plane of Sand</option>
+                    <option value="Avernus">Avernus</option>
+                    <option value="The Abyss">The Abyss</option>
+                    <option value="Githgarden">Githgarden</option>
+                    <option value="The Blood Flats">The Blood Flats</option>
+                    <option value="Axiom">Axiom</option>
+                    <option value="Arcadia">Arcadia</option>
+                    <option value="The Boglands">The Boglands</option>
+                    <option value="Incarnum">Incarnum</option>
+                    <option value="The Feywilds">The Feywilds</option>
+                    <option value="The Shadow Fell">The Shadow Fell</option>
+                    <option value="Limbo">Limbo</option>
+                    <option value="The Cloud Reaches">The Cloud Reaches</option>
+                    <option value="The Lower Celestial Plane">The Lower Celestial Plane</option>
+                    <option value="???">???</option>
+                </select>
+                <!-- Input for user arcana check. -->
+                <label for="arcana-check">Arcana Check:</label>
+                <input type="number" id="arcana-check">
+                <!-- Start Button -->
+                <button id='start-chart' type="button" onclick="Chart()">Chart a Course!</button>
         </form>
         <main id="chart-container">
             <!-- The chart will contain the course -->

@@ -38,6 +38,10 @@ button {
 #hero {
     text-align: center;
     font-size: var(--heading-size);
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* Form Styling */
@@ -48,11 +52,11 @@ label {
 }
 
 input[type="number"] {
-    width: 70px;
+    width: 80px;
     padding: 10px;
     margin: 15px;
-    font-family: var(--main-text);
     font-size: var(--form-size);
+    font-family: var(--main-text);
     color: var(--main-bg);
 }
 
@@ -157,6 +161,16 @@ select {
     border-color: var(--highlight);
 }
 
+.newChart {
+    text-align: center;
+    width: 100%;
+    width: 130px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--highlight);
+    color: var(--main-text-color);
+}
+
 /* Styling for the shadow button used for layout, blends in with the rest of the card. */
 .rerollButtonDisabled {
     background-color: var(--highlight);
@@ -205,5 +219,12 @@ select {
 
     .planeTitle {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    #hero {
+        flex-direction: column;
+        margin-bottom: 20px;
     }
 }
