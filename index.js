@@ -228,7 +228,6 @@ function createPlaneCard(_a, planeCount) {
     var planeInfo = document.createElement("ul");
     planeInfo.classList.add("planeInfo");
 
-    // TODO: WORKING HERE
     // Travel Time Parent Container - Done this way so I can use flexbox for layout.
     var planeTravelTime = document.createElement("li");
     // Travel Label
@@ -245,10 +244,19 @@ function createPlaneCard(_a, planeCount) {
     planeTravelTime.classList.add("planeTravelTime");
     planeInfo.appendChild(planeTravelTime);
 
-    // TODO: WORKING HERE
-    // Opens/Closes in 
+    // Opens/Closes in Parent Container - Done this way so I can use flexbox for layout.
     var planeOpensIn = document.createElement("li");
-    planeOpensIn.innerText = "".concat(status, ": ").concat(gateClose, " days");
+    // Opens/Closes Label
+    var planeOpensInLabel = document.createElement("p");
+    planeOpensInLabel.innerText = "".concat(status, ": ");
+    planeOpensInLabel.classList.add("planeOpensInLabel");
+    planeOpensIn.appendChild(planeOpensInLabel);
+    // Opens/Closes Number
+    var planeOpensInNumber = document.createElement("p");
+    planeOpensInNumber.innerText = "".concat(gateClose, " days");
+    planeOpensInNumber.classList.add("planeOpensInNumber");
+    planeOpensIn.appendChild(planeOpensInNumber);
+    // End of Parent Container
     planeOpensIn.classList.add("planeOpensIn");
     planeInfo.appendChild(planeOpensIn);
     planeCard.appendChild(planeInfo);

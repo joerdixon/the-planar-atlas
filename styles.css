@@ -87,13 +87,13 @@ select {
 }
 
 .planeInfo {
-    width: 40%;
+    width: 50%;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.planeTravelTime {
+.planeTravelTime, .planeOpensIn {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +101,9 @@ select {
 
 .planeTravelLabel {}
 
-.planeTravelNumber {}
+.planeTravelNumber, .planeOpensInNumber {
+    font-weight: bold;
+}
 
 .rerollButton {
     color: var(--main-text-color);
