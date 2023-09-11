@@ -10,7 +10,7 @@
     --main-bg: #111;
     --main-text-color: #fff;
     --main-alt: #89759F;
-    --highlight: #5e239d;
+    --highlight: #333;
 }
 
 body {
@@ -76,10 +76,8 @@ select {
 .planeCard {
     background-color: var(--highlight);
     padding: 20px;
-    margin: 10px 0;
-    border: var(--main-text-color) solid 2px;
+    margin: 1px 0;
     font-size: var(--text-size);
-    border-radius: 20px;
     animation: slidein 1s ease-in forwards;
 }
 
