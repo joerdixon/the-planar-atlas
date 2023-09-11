@@ -203,7 +203,7 @@ function determineColor(plane) {
         case "The Blood Flats": return "#8B0000";
         case "Axiom": return "#ffc834";
         case "Arcadia": return "#d300ed";
-        case "Incarnum": return "#666666";
+        case "Incarnum": return "#444444";
         case "The Mortal Kingdoms": return "#DA9100";
         case "The Feywilds": return "#064957";
         case "The Shadowfell": return "#1b083b";
@@ -236,7 +236,7 @@ function createOriginCard() {
     planeTitle.innerText = "".concat(origin);
     // You are Here
     var planeYAH = document.createElement("h2");
-    planeYAH.classList.add("planeTravelTime");
+    planeYAH.classList.add("planeLocation");
     planeYAH.innerText = "Starting Location";
     planeCard.appendChild(planeTitle);
     planeCard.appendChild(planeYAH);
@@ -269,12 +269,7 @@ function createPlaneCard(_a, planeCount) {
     var planeTitle = document.createElement("h1");
     planeTitle.classList.add("planeTitle");
     // If the plane is our destination, put that on the card
-    if (name === destination) {
-        planeTitle.innerText = "Destination: ".concat(name)
-    }
-    else {
-        planeTitle.innerText = "".concat(name)
-    }
+    planeTitle.innerText = "".concat(name);
     planeCard.appendChild(planeTitle);
     // Location
     var planeLocation = document.createElement("h2");

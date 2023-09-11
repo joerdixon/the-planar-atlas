@@ -5,7 +5,7 @@
     /* Sizing */
     --text-size: 1rem;
     --form-size: 1.1rem;
-    --heading-size: 1.6rem;
+    --heading-size: 1rem;
     /* Colors */
     --main-bg: #111;
     --main-text-color: #fff;
@@ -16,6 +16,7 @@
 body {
     background-color: #111;
     color: var(--main-text-color);
+    margin:0;
 }
 
 #root {
@@ -94,7 +95,7 @@ select {
 .planeCard {
     background-color: var(--highlight);
     width: 82%;
-    padding: 20px;
+    padding: 15px;
     font-size: var(--text-size);
     animation: slidein 1s ease-in forwards;
 }
@@ -102,6 +103,7 @@ select {
 .planeChip {
     width: 8%;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 .planeTitle {
@@ -112,7 +114,7 @@ select {
 
 .planeLocation {
     font-weight: normal;
-    font-size: 1rem;
+    font-size: .9rem;
     color: #CCC;
     margin: 0;
     margin-bottom: 10px;
@@ -147,6 +149,8 @@ select {
     color: var(--main-text-color);
     background-color: var(--main-alt);
     width: 20%;
+    border-width: -1px;
+    border-color: var(--highlight);
 }
 
 /* Styling for the shadow button used for layout, blends in with the rest of the card. */
