@@ -138,8 +138,8 @@ var planarAtlas = [
 ];
 // Array of all possible gate statuses.
 var gateStatus = [
-    "Opening",
-    "Closing"
+    "Opens",
+    "Closes"
 ];
 // Array of all possible gate locations.
 var gateLocation = [
@@ -172,7 +172,7 @@ function generatePlane() {
 // The first number in the return array will always be the travel time.
 function determineTiming() {
     // Roll 2d12.
-    // UPDATE: Wings 2 Acquired! Now rolling 1d6 for travel time and 1d12 for gate close time.
+    // UPDATE: Wings 2 Acquired! Now rolling 1d6 for travel time and 1d12 for gate timing.
     var timing = [Dice(6), Dice(12)];
     // The first number represents the travel time to the gate which should always be lower then the gate close time.
     // The first number in the array should always be the lower of the two.
@@ -191,11 +191,11 @@ function createOriginCard() {
     // Title
     var planeTitle = document.createElement("h1");
     planeTitle.classList.add("planeTitle");
-    planeTitle.innerText = "Origin: ".concat(origin);
+    planeTitle.innerText = "".concat(origin);
     // You are Here
     var planeYAH = document.createElement("h2");
     planeYAH.classList.add("planeTravelTime");
-    planeYAH.innerText = "The Axiom is here.";
+    planeYAH.innerText = "Starting Location";
     planeCard.appendChild(planeTitle);
     planeCard.appendChild(planeYAH);
     // Return the origin card element.
@@ -228,12 +228,12 @@ function createPlaneCard(_a, planeCount) {
     planeInfo.classList.add("planeInfo");
     // Travel Time
     var planeTravelTime = document.createElement("li");
-    planeTravelTime.innerText = "The gate to ".concat(name, " will take ").concat(travelTime, " days to reach.");
+    planeTravelTime.innerText = "Distance: ".concat(travelTime, " days");
     planeTravelTime.classList.add("planeTravelTime");
     planeInfo.appendChild(planeTravelTime);
     // Opens/Closes in 
     var planeOpensIn = document.createElement("li");
-    planeOpensIn.innerText = "The gate will be ".concat(status, " in ").concat(gateClose, " days.");
+    planeOpensIn.innerText = "".concat(status, ": ").concat(gateClose, " days");
     planeOpensIn.classList.add("planeOpensIn");
     planeInfo.appendChild(planeOpensIn);
     planeCard.appendChild(planeInfo);
