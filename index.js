@@ -183,6 +183,39 @@ function determineTiming() {
         return timing;
     }
 }
+
+// Returns a hex color code for the plane.
+function determineColor(plane) {
+    switch(plane) {
+        case "The Astral Plane": return "#000000";
+        case "Elemental Plane of Earth": return "#663300";
+        case "Elemental Plane of Water": return "#0000FF";
+        case "Elemental Plane of Fire": return "#FF0000";
+        case "Elemental Plane of Air": return "#FFFFFF";
+        case "Demi-Elemental Plane of Fog": return "#CCCCCC";
+        case "Demi-Elemental Plane of Steam": return "#CCCCCC";
+        case "Demi-Elemental Plane of Mud": return "#663300";
+        case "Demi-Elemental Plane of Smoke": return "#000000";
+        case "Demi-Elemental Plane of Sand": return "#FFFF00";
+        case "Avernus": return "#FF0000";
+        case "The Boglands": return "#663300";
+        case "The Abyss": return "#000000";
+        case "Githgarden": return "#00FF00";
+        case "The Blood Flats": return "#FF0000";
+        case "Axiom": return "#FFFFFF";
+        case "Arcadia": return "#00FF00";
+        case "Incarnum": return "#0000FF";
+        case "The Mortal Kingdoms": return "#663300";
+        case "The Feywilds": return "#00FF00";
+        case "The Shadowfell": return "#000000";
+        case "Limbo": return "#FFFFFF";
+        case "The Cloud Reaches": return "#FFFFFF";
+        case "The Lower Celestial Plane": return "#FFFFFF";
+        case "???": return "#FFFFFF";
+        default: return "#FFFFFF";
+    }
+}
+
 // This will always be the first card on the course, indicating where we start.
 function createOriginCard() {
     // Main Container

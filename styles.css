@@ -102,7 +102,6 @@ select {
 .planeChip {
     width: 10%;
     display: inline-block;
-    background-color: blueviolet;
 }
 
 .planeTitle {
