@@ -87,10 +87,21 @@ select {
 }
 
 .planeInfo {
+    width: 40%;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
+
+.planeTravelTime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.planeTravelLabel {}
+
+.planeTravelNumber {}
 
 .rerollButton {
     color: var(--main-text-color);

@@ -223,20 +223,36 @@ function createPlaneCard(_a, planeCount) {
     planeLocation.classList.add("planeLocation");
     planeLocation.innerText = "".concat(location);
     planeCard.appendChild(planeLocation);
+
     // Travel Info Container
     var planeInfo = document.createElement("ul");
     planeInfo.classList.add("planeInfo");
-    // Travel Time
+
+    // TODO: WORKING HERE
+    // Travel Time Parent Container - Done this way so I can use flexbox for layout.
     var planeTravelTime = document.createElement("li");
-    planeTravelTime.innerText = "Distance: ".concat(travelTime, " days");
+    // Travel Label
+    var planeTravelLabel = document.createElement("p");
+    planeTravelLabel.innerText = "Travel Time: ";
+    planeTravelLabel.classList.add("planeTravelLabel");
+    planeTravelTime.appendChild(planeTravelLabel);
+    // Travel Number
+    var planeTravelNumber = document.createElement("p");
+    planeTravelNumber.innerText = "".concat(travelTime, " days");
+    planeTravelNumber.classList.add("planeTravelNumber");
+    planeTravelTime.appendChild(planeTravelNumber);
+    // End of Parent Container
     planeTravelTime.classList.add("planeTravelTime");
     planeInfo.appendChild(planeTravelTime);
+
+    // TODO: WORKING HERE
     // Opens/Closes in 
     var planeOpensIn = document.createElement("li");
     planeOpensIn.innerText = "".concat(status, ": ").concat(gateClose, " days");
     planeOpensIn.classList.add("planeOpensIn");
     planeInfo.appendChild(planeOpensIn);
     planeCard.appendChild(planeInfo);
+
     // Reroll Button
     var rerollButton = document.createElement("button");
     // If the free reroll from Aspirant Navigator is still true, indicate.
