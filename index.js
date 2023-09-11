@@ -8,9 +8,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 // TODO: Add hours for times less than a day.
 // TODO: Add console for logging each change and course generation.
-// TODO: Better card layout.
+
 // DOM Selectors
 var userConsole = document.getElementById("console");
 var chart = document.getElementById("chart");
@@ -322,9 +323,24 @@ function createPlaneCard(_a, planeCount) {
     // Skip the destination card.
     if (name != destination) {
         rerollButton.classList.add("rerollButton");
-        rerollButton.innerHTML = rerollIcon;
         rerollButton.setAttribute("data-index", planeCount);
         rerollButton.addEventListener("click", rerollPlane);
+        // Add the SVG to the button.
+        rerollButton.innerHTML = rerollIcon;
+        // Clicking the SVG will actually just click the button since clicking the SVG doesn't trigger the event listener correctly. THANKS CHATGPT!
+        var rerollIconElement = rerollButton.querySelector('svg');
+        rerollIconElement.addEventListener('click', function (event) {
+            // Make sure we are not double clicking.
+            event.stopPropagation(event);
+            // Trigger a click event on the button
+            const clickEvent = new MouseEvent('click', {
+                bubbles: false,
+                cancelable: true,
+                view: window
+            });
+            rerollButton.dispatchEvent(clickEvent);
+        });
+
     } else {
         rerollButton.classList.add("rerollButtonDisabled")
     }
