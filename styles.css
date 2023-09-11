@@ -9,7 +9,7 @@
     /* Colors */
     --main-bg: #111;
     --main-text-color: #fff;
-    --main-alt: #89759F;
+    --main-alt: #222;
     --highlight: #333;
 }
 
@@ -21,6 +21,17 @@ body {
 #root {
     margin: 0 auto;
     font-family: var(--main-text)
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin: 0;
 }
 
 #hero {
@@ -84,7 +95,6 @@ select {
     background-color: var(--highlight);
     width: 80%;
     padding: 20px;
-    margin: 1px 0;
     font-size: var(--text-size);
     animation: slidein 1s ease-in forwards;
 }
@@ -122,6 +132,12 @@ select {
 .rerollButton {
     color: var(--main-text-color);
     background-color: var(--main-alt);
+    width: 20%;
+}
+
+/* Styling for the shadow button used for layout, blends in with the rest of the card. */
+.rerollButtonDisabled {
+    background-color: var(--highlight);
     width: 20%;
 }
 
