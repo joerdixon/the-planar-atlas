@@ -97,13 +97,14 @@ select {
     width: 82%;
     padding: 15px;
     font-size: var(--text-size);
-    animation: slidein 1s ease-in forwards;
+    animation: slideinFL 1.5s ease-in-out forwards;
 }
 
 .planeChip {
     width: 8%;
     display: inline-block;
     box-sizing: border-box;
+    animation: slideinFL 1.5s ease-in-out forwards;
 }
 
 .planeTitle {
@@ -151,21 +152,33 @@ select {
     width: 20%;
     border-width: -1px;
     border-color: var(--highlight);
+    animation: slideinFR 1.5s ease-in-out forwards;
 }
 
 /* Styling for the shadow button used for layout, blends in with the rest of the card. */
 .rerollButtonDisabled {
     background-color: var(--highlight);
     width: 20%;
+    animation: slideinFR 1.5s ease-in-out forwards;
 }
 
 /* Animations */
 
-@keyframes slidein {
+/* Slide In from Left */
+@keyframes slideinFL {
     from {
         transform: translateX(-150%);
     }
+    to {
+        transform: translateX(0%);
+    }
+}
 
+/* Slide in from Right */
+@keyframes slideinFR {
+    from {
+        transform: translateX(150%);
+    }
     to {
         transform: translateX(0%);
     }
