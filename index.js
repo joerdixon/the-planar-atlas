@@ -423,6 +423,7 @@ function renderChart(planeObjArray) {
     form.innerHTML = "";
     // Reset the chart
     chart.innerHTML = "";
+
     // Counts the planes to keep the order.
     var planeCount = 0;
     // Create a card for the starting plane.
@@ -435,15 +436,6 @@ function renderChart(planeObjArray) {
     }
     // Create a card for the destination plane.
     chart.appendChild(forceDestinationCard());
-    // Create refresh button
-    var newChart = document.createElement("button");
-    newChart.classList.add("newChart");
-    newChart.innerHTML = "New Chart";
-    newChart.addEventListener("click", function () {
-        // Refresh the browser.
-        location.reload();
-    });
-    hero.appendChild(newChart);
 }
 // When start button is clicked.
 function Chart() {
@@ -475,6 +467,15 @@ function Chart() {
     var course = determineCourse(planes);
     // Render the course on the dom.
     renderChart(course);
+    // Create refresh button
+    var newChart = document.createElement("button");
+    newChart.classList.add("newChart");
+    newChart.innerHTML = "New Chart";
+    newChart.addEventListener("click", function () {
+        // Refresh the browser.
+        location.reload();
+    });
+    hero.appendChild(newChart);
 }
 // When a user hits the reroll button
 function rerollPlane(event) {
