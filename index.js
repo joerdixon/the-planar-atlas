@@ -34,6 +34,8 @@ var destination;
 var visitedPlanes;
 // Indicates whether or not the free swap has been used from Aspirant Navigator feat.
 var freeRollUsed;
+// Tracks the number of times the user has rerolled a plane. Used for animations.
+var rerollCount = 1;
 // This will contain an array of objects, each representing a plane on the course.
 var courseObjects = [];
 // Array of all possible planes
@@ -364,7 +366,7 @@ function forceDestinationCard() {
         travelTime: gateTime[0],
         gateClose: gateTime[1]
     };
-    return (createPlaneCard(lastPlane, visitedPlanes.length - 1));
+    return (createPlaneCard(lastPlane, visitedPlanes.length - rerollCount));
 }
 // This function returns a number of planes based on their Arcana check.
 function rollPlanes(arcanaRoll) {
@@ -479,6 +481,8 @@ function Chart() {
 }
 // When a user hits the reroll button
 function rerollPlane(event) {
+    // Increment the reroll count.
+    rerollCount+=1;
     // Rolled planes
     var rerollPlanes = [];
     // Note the index of the card being rerolled.

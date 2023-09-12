@@ -44,6 +44,8 @@ button {
     align-items: center;
 }
 
+#hero h1 {}
+
 /* Form Styling */
 
 label {
