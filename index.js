@@ -483,7 +483,7 @@ function Chart() {
 // When a user hits the reroll button
 function rerollPlane(event) {
     // Increment the reroll count.
-    rerollCount+=1;
+    rerollCount += 1;
     // Rolled planes
     var rerollPlanes = [];
     // Note the index of the card being rerolled.

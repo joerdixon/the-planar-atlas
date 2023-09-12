@@ -16,7 +16,7 @@
 body {
     background-color: #111;
     color: var(--main-text-color);
-    margin:0;
+    margin: 0;
 }
 
 #root {
@@ -146,13 +146,13 @@ select {
 
 .planeTravelLabel,
 .planeOpensInLabel {
-    margin:0;
+    margin: 0;
 }
 
 .planeTravelNumber,
 .planeOpensInNumber {
     font-weight: bold;
-    margin:0;
+    margin: 0;
 }
 
 .rerollButton {
@@ -186,6 +186,7 @@ select {
     from {
         transform: translateX(-150%);
     }
+
     to {
         transform: translateX(0%);
     }
@@ -196,6 +197,7 @@ select {
     from {
         transform: translateX(150%);
     }
+
     to {
         transform: translateX(0%);
     }
@@ -203,14 +205,14 @@ select {
 
 @keyframes animateIn {
     0% {
-      opacity: 0;
-      transform: scale(0.6) translateY(-8px);
+        opacity: 0;
+        transform: scale(0.6) translateY(-8px);
     }
-    
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
 /* Mobile Styling */
 
