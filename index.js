@@ -366,6 +366,7 @@ function forceDestinationCard() {
         travelTime: gateTime[0],
         gateClose: gateTime[1]
     };
+    // Return the destination card element with a planeCount 1 higher then the final non-destination plane.
     return (createPlaneCard(lastPlane, visitedPlanes.length - rerollCount));
 }
 // This function returns a number of planes based on their Arcana check.
